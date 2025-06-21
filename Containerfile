@@ -22,8 +22,8 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
-    dnf remove aurora-backgrounds ptyxis && \
-    dnf install konsole waydroid && \
+    dnf -y remove aurora-backgrounds ptyxis && \
+    dnf -y install konsole waydroid && \
     mkdir -p /etc/flatpak/remotes.d && \
     curl -Lo /etc/flatpak/remotes.d/flathub.flatpakrepo https://dl.flathub.org/repo/flathub.flatpakrepo && \
     ostree container commit
