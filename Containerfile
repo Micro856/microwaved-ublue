@@ -28,7 +28,6 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
         ublue-os/staging \
         ublue-os/packages; \
     do \
-    mkdir /root/.gnupg && \
     dnf5 -y install dnf5-plugins && \
     dnf5 -y copr enable $copr; \
     done && unset -v copr && \
