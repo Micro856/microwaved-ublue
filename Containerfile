@@ -49,7 +49,6 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     systemctl enable brew-setup.service && \
     systemctl enable brew-upgrade.timer && \
     systemctl enable brew-update.timer && \
-    systemctl enable ublue-fix-hostname.service && \
     systemctl enable ublue-system-setup.service && \
     systemctl --global enable ublue-user-setup.service && \
     systemctl --global enable podman-auto-update.timer && \
