@@ -46,7 +46,6 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     mkdir -p /etc/flatpak/remotes.d && \
     curl -Lo /etc/flatpak/remotes.d/flathub.flatpakrepo https://dl.flathub.org/repo/flathub.flatpakrepo && \
     systemctl enable rpm-ostree-countme.service && \
-    systemctl enable ublue-guest-user.service && \
     systemctl enable brew-setup.service && \
     systemctl enable brew-upgrade.timer && \
     systemctl enable brew-update.timer && \
