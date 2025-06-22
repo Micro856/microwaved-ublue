@@ -55,40 +55,40 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
         bcc \
         code \
         dbus-x11 \
-		docker-buildx-plugin \
-		docker-ce \
-		docker-ce-cli \
-		docker-compose-plugin \
+	docker-buildx-plugin \
+	docker-ce \
+	docker-ce-cli \
+	docker-compose-plugin \
         flatpak-builder \
         genisoimage \
         google-droid-sans-mono-fonts \
-		google-go-mono-fonts \
-		ibm-plex-mono-fonts \
+	google-go-mono-fonts \
+	ibm-plex-mono-fonts \
         libvirt \
-		libvirt-nss \
+	libvirt-nss \
         mozilla-fira-mono-fonts \
         osbuild-selinux \
-		p7zip \
-		p7zip-plugins \
-		podman-bootc \
-		podman-compose \
-		podman-machine \
-		podman-tui \
-		podmansh \
-		powerline-fonts \
+	p7zip \
+	p7zip-plugins \
+	podman-bootc \
+	podman-compose \
+	podman-machine \
+	podman-tui \
+	podmansh \
+	powerline-fonts \
         qemu \
-		qemu-char-spice \
-		qemu-device-display-virtio-gpu \
-		qemu-device-display-virtio-vga \
-		qemu-device-usb-redirect \
-		qemu-img \
-		qemu-system-x86-core \
-		qemu-user-binfmt \
-		qemu-user-static \
+	qemu-char-spice \
+	qemu-device-display-virtio-gpu \
+	qemu-device-display-virtio-vga \
+	qemu-device-usb-redirect \
+	qemu-img \
+	qemu-system-x86-core \
+	qemu-user-binfmt \
+	qemu-user-static \
         ublue-os-libvirt-workarounds \
         virt-manager \
-		virt-v2v \
-		virt-viewer \
+	virt-v2v \
+	virt-viewer \
         distrobox \
         podman \
         ublue-bling \
@@ -96,37 +96,37 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
         uupd \
         ublue-fastfetch \
         ublue-branding \
-		ublue-motd \
-		ublue-polkit-rules \
-	    ublue-setup-services \
+	ublue-motd \
+	ublue-polkit-rules \
+	ublue-setup-services \
         waydroid; \
     do \
     dnf -y install $usefull; && \
     done && unset -v usefull && \
     for bloat in \
         kate \
-    kate-krunner-plugin \
-    kate-plugins \
-    fedora-bookmarks \
-    fedora-chromium-config \
-    fedora-chromium-config-kde \
-    firefox \
-    firefox-langpacks \
-    firewall-config \
-    kcharselect \
-    krfb \
-    krfb-libs \
-    plasma-discover-kns \
-    plasma-welcome-fedora \
-    podman-docker \
-    krdp \
-    kwrite \
-    ark \
-    ark-libs \
-    htop \
-    nvtop; \
+    	kate-krunner-plugin \
+   	kate-plugins \
+    	fedora-bookmarks \
+    	fedora-chromium-config \
+    	fedora-chromium-config-kde \
+    	firefox \
+    	firefox-langpacks \
+    	firewall-config \
+    	kcharselect \
+    	krfb \
+    	krfb-libs \
+    	plasma-discover-kns \
+    	plasma-welcome-fedora \
+   	podman-docker \
+   	krdp \
+   	kwrite \
+    	ark \
+    	ark-libs \
+    	htop \
+    	nvtop; \
     do \
-        dnf -y remove $bloat; && \
+    dnf -y remove $bloat; && \
     done && unset -v bloat && \
     mkdir -p /etc/flatpak/remotes.d && \
     curl -Lo /etc/flatpak/remotes.d/flathub.flatpakrepo https://dl.flathub.org/repo/flathub.flatpakrepo && \
