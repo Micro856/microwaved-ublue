@@ -29,7 +29,8 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     do \
     dnf5 -y install dnf5-plugins && \
     dnf5 -y copr enable $copr; \
-    done && unset -v copr
+    done && unset -v copr && \
+    dnf5 -y install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release{,-extras}
 
 # do rest of weird stuff
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
@@ -37,6 +38,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
     for usefull in \
+	google-noto-fonts-all \
         glow \
         gum \
         zsh \
@@ -128,6 +130,24 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     done && unset -v bloat && \
     mkdir -p /etc/flatpak/remotes.d && \
     curl -Lo /etc/flatpak/remotes.d/flathub.flatpakrepo https://dl.flathub.org/repo/flathub.flatpakrepo && \
+    systemctl enable rpm-ostree-countme.service && \
+    systemctl enable dconf-update.service && \
+    systemctl enable ublue-guest-user.service && \
+    systemctl enable brew-setup.service && \
+    systemctl enable brew-upgrade.timer && \
+    systemctl enable brew-update.timer && \
+    systemctl enable usr-share-sddm-themes.mount && \
+    systemctl enable ublue-fix-hostname.service && \
+    systemctl enable ublue-system-setup.service && \
+    systemctl --global enable ublue-user-setup.service && \
+    systemctl --global enable podman-auto-update.timer && \
+    systemctl enable check-sb-key.service && \
+    systemctl enable input-remapper.service && \
+    systemctl enable uupd.timer && \
+    systemctl disable rpm-ostreed-automatic.timer && \
+    systemctl disable flatpak-system-update.timer && \
+    dnf5 -y copr disable ublue-os/staging && \
+    dnf5 -y copr disable ublue-os/packages && \
     ostree container commit
     
 ### LINTING
